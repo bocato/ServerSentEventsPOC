@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E5302673215952DC000442E5 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5302672215952DC000442E5 /* StringExtension.swift */; };
+		E530267621596133000442E5 /* sse.js in Resources */ = {isa = PBXBuildFile; fileRef = E530267421596133000442E5 /* sse.js */; };
+		E530267721596133000442E5 /* package.json in Resources */ = {isa = PBXBuildFile; fileRef = E530267521596133000442E5 /* package.json */; };
+		E530267B21596BCC000442E5 /* EventSourceConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E530267A21596BCC000442E5 /* EventSourceConnector.swift */; };
 		E5C925CD21558E4200BE5787 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C925CC21558E4200BE5787 /* AppDelegate.swift */; };
 		E5C925CF21558E4200BE5787 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C925CE21558E4200BE5787 /* ViewController.swift */; };
 		E5C925D221558E4200BE5787 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5C925D021558E4200BE5787 /* Main.storyboard */; };
@@ -26,6 +30,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E5302672215952DC000442E5 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		E530267421596133000442E5 /* sse.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sse.js; sourceTree = "<group>"; };
+		E530267521596133000442E5 /* package.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
+		E530267A21596BCC000442E5 /* EventSourceConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSourceConnector.swift; sourceTree = "<group>"; };
 		E5C925C921558E4200BE5787 /* ServerSentEventsPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ServerSentEventsPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5C925CC21558E4200BE5787 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5C925CE21558E4200BE5787 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +64,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E530266E215950B3000442E5 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				E530267521596133000442E5 /* package.json */,
+				E530267421596133000442E5 /* sse.js */,
+			);
+			path = Server;
+			sourceTree = "<group>";
+		};
 		E5C925C021558E4200BE5787 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +94,8 @@
 		E5C925CB21558E4200BE5787 /* ServerSentEventsPOC */ = {
 			isa = PBXGroup;
 			children = (
+				E530266E215950B3000442E5 /* Server */,
+				E5C925EC21558E5100BE5787 /* Connector */,
 				E5C925CC21558E4200BE5787 /* AppDelegate.swift */,
 				E5C925CE21558E4200BE5787 /* ViewController.swift */,
 				E5C925D021558E4200BE5787 /* Main.storyboard */,
@@ -94,6 +113,15 @@
 				E5C925E321558E4400BE5787 /* Info.plist */,
 			);
 			path = ServerSentEventsPOCTests;
+			sourceTree = "<group>";
+		};
+		E5C925EC21558E5100BE5787 /* Connector */ = {
+			isa = PBXGroup;
+			children = (
+				E5302672215952DC000442E5 /* StringExtension.swift */,
+				E530267A21596BCC000442E5 /* EventSourceConnector.swift */,
+			);
+			path = Connector;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,9 +205,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E530267621596133000442E5 /* sse.js in Resources */,
 				E5C925D721558E4400BE5787 /* LaunchScreen.storyboard in Resources */,
 				E5C925D421558E4400BE5787 /* Assets.xcassets in Resources */,
 				E5C925D221558E4200BE5787 /* Main.storyboard in Resources */,
+				E530267721596133000442E5 /* package.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +227,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5302673215952DC000442E5 /* StringExtension.swift in Sources */,
+				E530267B21596BCC000442E5 /* EventSourceConnector.swift in Sources */,
 				E5C925CF21558E4200BE5787 /* ViewController.swift in Sources */,
 				E5C925CD21558E4200BE5787 /* AppDelegate.swift in Sources */,
 			);
