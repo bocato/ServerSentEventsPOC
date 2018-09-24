@@ -54,9 +54,8 @@ class ViewController: UIViewController {
         }
         
         eventSourceConnector?.setOnErrorCallback({ (error) in
-            self.statusLabel.text = "Error"
-            self.statusLabel.textColor = UIColor.red
             self.eventSourceConnector?.closeConnection()
+            self.updateConnectionStatusLabel()
             self.openButton.isEnabled = true
             self.closeButton.isEnabled = false
         })
@@ -96,6 +95,11 @@ class ViewController: UIViewController {
     @IBAction func closeButtonDidReceiveTouchUpInside(_ sender: Any) {
         eventSourceConnector?.closeConnection()
         updateConnectionStatusLabel()
+    }
+    
+    @IBAction func clearEventsDidReceiveTouchUpInside(_ sender: Any) {
+        events = []
+        tableView.reloadData()
     }
     
 }

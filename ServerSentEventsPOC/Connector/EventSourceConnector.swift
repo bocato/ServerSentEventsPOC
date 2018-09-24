@@ -69,19 +69,6 @@ open class EventSourceConnector: NSObject, URLSessionDataDelegate {
         super.init()
 //        self.openConnection()
     }
-
-    // helpers -=== refactpr
-    fileprivate func receivedMessageToClose(_ httpResponse: HTTPURLResponse?) -> Bool {
-        guard let response = httpResponse else {
-            return false
-        }
-        
-        if response.statusCode == 204 {
-            self.closeConnection()
-            return true
-        }
-        return false
-    }
     
 }
 
@@ -116,6 +103,7 @@ extension EventSourceConnector {
     open func events() -> Array<String> {
         return Array(self.eventListeners.keys)
     }
+    
 }
 
 // MARK: - Connection
@@ -175,6 +163,14 @@ extension EventSourceConnector {
             delegate: self,
             delegateQueue: operationQueue
         )
+    }
+    
+    fileprivate func wasMessageToCloseReceived(in response: URLResponse?) -> Bool {
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 204 else {
+            return false
+        }
+        closeConnection()
+        return true
     }
     
 }
@@ -357,7 +353,7 @@ extension EventSourceConnector {
 extension EventSourceConnector: URLSessionDelegate {
     
     open func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
-        if self.receivedMessageToClose(dataTask.response as? HTTPURLResponse) {
+        if wasMessageToCloseReceived(in: dataTask.response) {
             return
         }
         
@@ -373,7 +369,7 @@ extension EventSourceConnector: URLSessionDelegate {
     open func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive response: URLResponse, completionHandler: @escaping (URLSession.ResponseDisposition) -> Void) {
         completionHandler(URLSession.ResponseDisposition.allow)
         
-        if self.receivedMessageToClose(dataTask.response as? HTTPURLResponse) {
+        if wasMessageToCloseReceived(in: dataTask.response) {
             return
         }
         
@@ -388,7 +384,7 @@ extension EventSourceConnector: URLSessionDelegate {
     open func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         self.readyState = .closed
         
-        if self.receivedMessageToClose(task.response as? HTTPURLResponse) {
+        if wasMessageToCloseReceived(in: task.response) {
             return
         }
         

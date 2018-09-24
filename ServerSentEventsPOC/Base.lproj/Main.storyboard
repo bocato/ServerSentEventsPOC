@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -66,11 +67,18 @@
                                 <action selector="closeButtonDidReceiveTouchUpInside:" destination="4JR-qD-nuS" id="SvO-SA-6rn"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Open" id="Xlt-CJ-fvS">
-                            <connections>
-                                <action selector="openButtonDidReceiveTouchUpInside:" destination="4JR-qD-nuS" id="g5n-9q-feI"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Open" id="Xlt-CJ-fvS">
+                                <connections>
+                                    <action selector="openButtonDidReceiveTouchUpInside:" destination="4JR-qD-nuS" id="g5n-9q-feI"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Clear Events" id="9eB-OO-emn">
+                                <connections>
+                                    <action selector="clearEventsDidReceiveTouchUpInside:" destination="4JR-qD-nuS" id="h39-Po-kgs"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="closeButton" destination="WWr-jq-9ha" id="DdV-IC-zd7"/>
